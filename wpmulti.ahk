@@ -2,15 +2,34 @@
 #NoEnv
 #SingleInstance Force
 
-; AU - 1
-; Ca - 2
-; UK - 3
-; US - 4
+; Setup
 
-global instances = 3
-global render_distance = 14 ; 32 - rd
+; mods
+; world preview
+; auto reset
+; fast reset
+; krypton
+; lazy dfu
+; lithium
+; sodium
+; starlight
+
+; multi instance pack
+; language   instance  
+; AU - 			1
+; Ca - 			2
+; UK - 			3
+; US - 			4
+
+; start every instance and move them to the left side of the taskbar
+; enable the "Automatically hide the taskbar" option
+; change resetspath 
+; don't mess with win delay
+
+global instances = 3 ; instance number
+global render_distance = 14 
 delay = 15
-global Sounds = true       
+global Sounds = true ; reset sounds    
 
 SetKeyDelay, delay
 SetWinDelay, 100
@@ -21,7 +40,7 @@ global current_instance = 1
 
 global total_resets = 6900
 
-global resetspath = "C:\Users\kiril\Desktop\__\MC\ahks\_WallReset\resets.txt"
+global resetspath = "C:\Users\___"
 
 FileRead, total_resets, %resetspath%
 
@@ -85,20 +104,18 @@ ResetSwitch()
   SwitchWindow()
 }
 
-{     
+{    
+	; reset current instance and switch 
     U::
       ResetSwitch()
     return
 
-    Y::
-    	rddown()
-    	rdup()
-    return
-
+    ; show the resets counter
     RAlt::
         MsgBox, %total_resets%
     return
     
+    ; reload the macro - Ctrl + Alt
     ^LAlt::
         Reload
     return
